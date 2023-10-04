@@ -1,6 +1,4 @@
 resources/
-node_modules/
-_vendor/
 public/
 .hugo_build.lock
 

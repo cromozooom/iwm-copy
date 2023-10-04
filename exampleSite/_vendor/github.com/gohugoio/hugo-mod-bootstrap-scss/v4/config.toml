@@ -1,5 +1,3 @@
-baseURL = "https://comforting-salmiakki-a4300a.netlify.app/"
-
 [module]
 [module.hugoVersion]
 extended = true

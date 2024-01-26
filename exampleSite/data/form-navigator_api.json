@@ -1,0 +1,323 @@
+[
+    {
+        "title": "Individus concernés",
+        "filter": true,
+        "cta": "Ajouter un contact",
+        "items": [
+            {
+                "title": "Titulaire",
+                "items": [
+                    {
+                        "color": "info",
+                        "title": {
+                            "name": "Joe Bloggs - (Primary Contact)",
+                            "type": "primary contact"
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "title": "KYC / AML",
+                                "link": false,
+                                "status": "info",
+                                "ico": "tool",
+                                "pill": "En cours",
+                                "fails": 0
+                            },
+                            {
+                                "title": "MIF Tiers",
+                                "link": false,
+                                "status": "info",
+                                "ico": "tool",
+                                "pill": "Validé",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "success",
+                        "title": {
+                            "name": "James Blogg",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "success",
+                                "ico": "tool",
+                                "title": "KYC / AML",
+                                "link": false,
+                                "pill": "Validé",
+                                "fails": 0
+                            },
+                            {
+                                "status": "success",
+                                "ico": "tool",
+                                "title": "MIF Tiers",
+                                "link": false,
+                                "pill": "Validé",
+                                "fails": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Représentant legal",
+                "items": [
+                    {
+                        "color": "success",
+                        "title": {
+                            "name": "Linda Bell",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "success",
+                                "ico": "tool",
+                                "title": "KYC / AML",
+                                "link": false,
+                                "pill": "Validé",
+                                "fails": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Mandataire",
+                "items": [
+                    {
+                        "color": "danger",
+                        "title": {
+                            "name": "John Heard",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "danger",
+                                "ico": "tool",
+                                "title": "KYC / AML",
+                                "link": false,
+                                "pill": "Rejeté",
+                                "fails": 6
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "KYC Relation Contractuelle",
+        "filter": false,
+        "cta": false,
+        "items": [
+            {
+                "title": "",
+                "items": [
+                    {
+                        "color": "info",
+                        "title": {
+                            "name": "UNIPP - John Clease",
+                            "type": ""
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "title": "KYC RC",
+                                "link": false,
+                                "status": "info",
+                                "ico": "tool",
+                                "pill": "En cours",
+                                "fails": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Produits et mandats",
+        "filter": true,
+        "cta": "Ajouter un contact",
+        "items": [
+            {
+                "items": [
+                    {
+                        "color": "neutral-light",
+                        "title": {
+                            "name": "Compte de Depot - Pas de service",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "title": "Produit",
+                                "link": false,
+                                "status": "active",
+                                "ico": "tool",
+                                "pill": "En cours",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "neutral-light",
+                        "title": {
+                            "name": "Compte Titres - Mandat de gestion",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "title": "Produit",
+                                "link": false,
+                                "status": "active",
+                                "ico": "tool",
+                                "pill": "En cours",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "neutral-light",
+                        "title": {
+                            "name": "James Bud - (Contact Principal)",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "title": "Produit",
+                                "link": false,
+                                "status": "active",
+                                "ico": "tool",
+                                "pill": "En cours",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "success",
+                        "title": {
+                            "name": "Compte Tires - Mandate of Management",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "success",
+                                "ico": "tool",
+                                "title": "Produit",
+                                "link": false,
+                                "pill": "Validé",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "success",
+                        "title": {
+                            "name": "Compte Tires - Mandate of Management",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "success",
+                                "ico": "tool",
+                                "title": "Produit",
+                                "link": false,
+                                "pill": "Controlé",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "info",
+                        "title": {
+                            "name": "Compte Tires - Mandate of Management",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "info",
+                                "ico": "tool",
+                                "title": "Produit",
+                                "link": false,
+                                "pill": "En cours",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "info",
+                        "title": {
+                            "name": "Compte Tires - Mandate of Management",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "info",
+                                "ico": "tool",
+                                "title": "Produit",
+                                "link": false,
+                                "pill": "En cours",
+                                "fails": 0
+                            },
+                            {
+                                "status": "info",
+                                "ico": "tool",
+                                "title": "Harvest",
+                                "link": true,
+                                "pill": "En cours",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "info",
+                        "title": {
+                            "name": "Compte Tires - Mandate of Management",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "neutral-darker",
+                                "ico": "tool",
+                                "title": "Produit",
+                                "link": false,
+                                "pill": "Annulé",
+                                "fails": 0
+                            }
+                        ]
+                    },
+                    {
+                        "color": "danger",
+                        "title": {
+                            "name": "John Heard",
+                            "type": false
+                        },
+                        "close": true,
+                        "forms": [
+                            {
+                                "status": "danger",
+                                "ico": "tool",
+                                "title": "KYC / AML",
+                                "link": false,
+                                "pill": "Rejeté",
+                                "fails": 10
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

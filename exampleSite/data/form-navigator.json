@@ -1,0 +1,207 @@
+[
+    {
+        "status": "success",
+        "id": 1,
+        "name": "Jethro Durnford",
+        "function": "Insurance - Puduit Lambda",
+        "form": "KYC",
+        "form_status": "info",
+        "rand_form_count": 3,
+        "rand_form_status_count": 1,
+        "rand": [
+            {},
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "info",
+        "id": 2,
+        "name": "Nike Miskimmon",
+        "function": "Holder",
+        "form": "KYC-RC",
+        "form_status": "info",
+        "rand_form_count": 2,
+        "rand_form_status_count": 1,
+        "rand": [
+            {}
+        ]
+    },
+    {
+        "status": "success",
+        "id": 3,
+        "name": "Alysia Falco",
+        "function": "Legal representative",
+        "form": "RC",
+        "form_status": "warning",
+        "rand_form_count": 1,
+        "rand_form_status_count": 3,
+        "rand": [
+            {},
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "success",
+        "id": 4,
+        "name": "Carree Kenewell",
+        "function": "Insurance - Puduit Lambda",
+        "form": "RC",
+        "form_status": "danger",
+        "rand_form_count": 1,
+        "rand_form_status_count": 2,
+        "rand": [
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "neutral-light",
+        "id": 5,
+        "name": "Spence Friar",
+        "function": "Holder",
+        "form": "KYC",
+        "form_status": "info",
+        "rand_form_count": 2,
+        "rand_form_status_count": 3,
+        "rand": [
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "neutral-light",
+        "id": 6,
+        "name": "Ringo Broadwell",
+        "function": "Securities account - management mandate",
+        "form": "RC",
+        "form_status": "danger",
+        "rand_form_count": 3,
+        "rand_form_status_count": 1,
+        "rand": [
+            {},
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "info",
+        "id": 7,
+        "name": "Curt Do",
+        "function": "Insurance - Puduit Lambda",
+        "form": "RC",
+        "form_status": "danger",
+        "rand_form_count": 3,
+        "rand_form_status_count": 2,
+        "rand": [
+            {}
+        ]
+    },
+    {
+        "status": "neutral-light",
+        "id": 8,
+        "name": "Kandy Firby",
+        "function": "Insurance - Puduit Lambda",
+        "form": "KYC-AML",
+        "form_status": "warning",
+        "rand_form_count": 1,
+        "rand_form_status_count": 2,
+        "rand": [
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "neutral-light",
+        "id": 9,
+        "name": "Gus Watsham",
+        "function": "Insurance - Puduit Lambda",
+        "form": "KYC-RC",
+        "form_status": "info",
+        "rand_form_count": 1,
+        "rand_form_status_count": 3,
+        "rand": [
+            {},
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "neutral-light",
+        "id": 10,
+        "name": "Laurene Lough",
+        "function": "Securities account - management mandate",
+        "form": "RC",
+        "form_status": "success",
+        "rand_form_count": 2,
+        "rand_form_status_count": 1,
+        "rand": [
+            {},
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "neutral-light",
+        "id": 11,
+        "name": "Dulcea Paish",
+        "function": "Insurance - Puduit Lambda",
+        "form": "KYC-RC",
+        "form_status": "success",
+        "rand_form_count": 1,
+        "rand_form_status_count": 2,
+        "rand": []
+    },
+    {
+        "status": "success",
+        "id": 12,
+        "name": "Norbert Kubal",
+        "function": "Securities account - management mandate",
+        "form": "KYC-AML",
+        "form_status": "danger",
+        "rand_form_count": 1,
+        "rand_form_status_count": 3,
+        "rand": [
+            {}
+        ]
+    },
+    {
+        "status": "success",
+        "id": 13,
+        "name": "Nari Jedraszek",
+        "function": "Holder",
+        "form": "KYC",
+        "form_status": "warning",
+        "rand_form_count": 3,
+        "rand_form_status_count": 2,
+        "rand": [
+            {},
+            {}
+        ]
+    },
+    {
+        "status": "success",
+        "id": 14,
+        "name": "Evelina Leydon",
+        "function": "Holder",
+        "form": "KYC-AML",
+        "form_status": "success",
+        "rand_form_count": 3,
+        "rand_form_status_count": 1,
+        "rand": [
+            {}
+        ]
+    },
+    {
+        "status": "neutral-light",
+        "id": 15,
+        "name": "Marleen Baldock",
+        "function": "Insurance - Puduit Lambda",
+        "form": "KYC",
+        "form_status": "danger",
+        "rand_form_count": 2,
+        "rand_form_status_count": 3,
+        "rand": []
+    }
+]

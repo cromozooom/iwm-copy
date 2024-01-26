@@ -1,0 +1,47 @@
+{{ $shuffledItems1 := shuffle (slice "KYC-AML" "KYC" "RC" "KYC-RC") }}
+{{ $shuffledItems2 := shuffle (slice "KYC-AML" "KYC" "RC" "KYC-RC") }}
+{{ $shuffledItems3 := shuffle (slice "KYC-AML" "KYC" "RC" "KYC-RC") }}
+{{ $shuffledStatus1 := shuffle (slice "info" "success" "warning" "danger") }}
+{{ $shuffledStatus2 := shuffle (slice "info" "success" "warning" "danger") }}
+{{ $shuffledStatus3 := shuffle (slice "info" "success" "warning" "danger") }}
+
+<div class="relative">
+    <div class="w-100">
+      {{ partial "toolbar.html"  (dict "type" "success") }}  
+    </div>
+  </div>
+  <div
+    class="d-flex card"
+    :class="editDasboard ? 'outline outline-success' : ''">
+    {{- partial "card.html" (dict "card" "title" "title" "Individual concerns") -}}
+    {{ $form := getJSON "data/form-navigator.json" }}
+
+    {{ range $form }}
+    <div class="border-left__10 border-left__arrow border-left__{{.status}} border-top py-2">
+      <div class="d-flex align-items-center justify-content-between p-2 gap-sm">
+        <div class="d-flex gap-sm justify-content-start align-items-center">
+          <div class="badge badge-neutral-light ">
+            {{ .function }}
+          </div>
+          <strong>{{ .name }}</strong>                      
+        </div>
+        <div>
+          <button class="btn btn-link btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <ul class="list-unstyled d-flex flex-wrap gap-sm px-2 mb-0 py-2 mb-1">
+        {{ $rand_form_count := .rand_form_count }}
+        {{ $rand_form_status_count := .rand_form_status_count }}
+        {{ range .rand }}
+            {{ partial "form-button.html" (dict "rand_form_count" $rand_form_count "rand_form_status_count" $rand_form_status_count  ) }}
+        {{ end }}
+        
+      </ul>
+    </div>
+{{ end }}
+    
+  </div>

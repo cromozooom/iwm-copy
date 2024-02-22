@@ -18,6 +18,7 @@ body {
   --primary-13: theme-color-level("primary", 13);
 }
 
+
 .border-start {
   border-left: 1px solid;
 }
@@ -79,4 +80,11 @@ body {
       color: color-yiq($value, black, white);
     }
   }
+}
+
+.w-filter-md {
+  min-width: 12rem;
+}
+.w-filter-lg {
+  min-width: 20rem;
 }

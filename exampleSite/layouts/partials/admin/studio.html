@@ -1,0 +1,11 @@
+{{ $context := .context }}
+{{ $level := .level }}
+
+{{ range $context }}
+        <td>{{ $level }}</td>
+        <td>{{ . }}</td>
+        
+        {{/*
+            <td>{{ with .Name }}{{ . }}{{ end }}</td> -->
+        */}}
+{{ end }}

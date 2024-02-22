@@ -1,0 +1,716 @@
+<!-- <header>
+    header
+</header>
+<side>side</side>
+<main>main</main>
+<side>side</side> -->
+
+<!-- Your Alpine.js component -->
+<body  class="xd-flex xflex-column h-100 border-primary xoverflow-auto" x-data="data()" x-init="init()">
+    {{ $header := 0 }}
+    {{ if $header }}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+        <div class="position-sticky top-0 bg-white shadow">
+            
+
+            <template x-for="item in adminData">
+                <div>
+                    <div class="d-flex gap p-2">
+                        <div class="d-flex">
+                            <div class="w-filter-lg"
+                                x-data="{
+                                    multiple: false,
+                                    value: 1,
+                                    options: formatFilterData(filterOptions.instanceStyle),
+                                    init() {
+                                        this.$nextTick(() => {
+                                            let choices = new Choices(this.$refs.select)
+        
+                                            let refreshChoices = () => {
+                                                let selection = this.multiple ? this.value : [this.value]
+        
+                                                choices.clearStore()
+                                                choices.setChoices(this.options.map(({ value, label }) => ({
+                                                    value,
+                                                    label,
+                                                    selected: selection.includes(value),
+                                                })))
+                                            }
+        
+                                            refreshChoices()
+        
+                                            this.$refs.select.addEventListener('change', () => {
+                                                this.value = choices.getValue(true)
+                                            })
+        
+                                            this.$watch('value', () => refreshChoices())
+                                            this.$watch('options', () => refreshChoices())
+                                        })
+                                    }
+                                }"
+                                class="max-w-sm w-full"
+                            >
+                                <label for="stateCode">Style</label>
+                                <select class="form-control form-control-sm" x-ref="select" :multiple="multiple"></select>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="w-filter-lg"
+                                x-data="{
+                                    multiple: false,
+                                    value: 1,
+                                    options: formatFilterData(filterOptions.configType),
+                                    init() {
+                                        this.$nextTick(() => {
+                                            let choices = new Choices(this.$refs.select)
+        
+                                            let refreshChoices = () => {
+                                                let selection = this.multiple ? this.value : [this.value]
+        
+                                                choices.clearStore()
+                                                choices.setChoices(this.options.map(({ value, label }) => ({
+                                                    value,
+                                                    label,
+                                                    selected: selection.includes(value),
+                                                })))
+                                            }
+        
+                                            refreshChoices()
+        
+                                            this.$refs.select.addEventListener('change', () => {
+                                                this.value = choices.getValue(true)
+                                            })
+        
+                                            this.$watch('value', () => refreshChoices())
+                                            this.$watch('options', () => refreshChoices())
+                                        })
+                                    }
+                                }"
+                                class="max-w-sm w-full"
+                            >
+                                <label for="stateCode">ConfigType</label>
+                                <select class="form-control form-control-sm" x-ref="select" :multiple="multiple"></select>
+                            </div>
+                        </div>
+                        
+                        <!-- Dropdown filter for ConfigType -->
+                        <div class="d-flex flex-column">
+                            <label for="stateCode">State</label>
+                            
+                            <select class="form-control form-control-sm" id="stateCodeFilter" x-model="filters.stateCode">
+                                <option value="">All</option>
+                                <template x-for="option in filterOptions.stateCode">
+                                    <option x-text="option"></option>
+                                </template>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+            </template>
+            <!-- <div class="form-group">
+                <input
+                    x-ref="searchInput"
+                    x-model="search"
+                    x-on:keydown.window.prevent.slash="$refs.searchInput.focus()"
+                    placeholder="Search ..."
+                    type="search"
+                    class="block w-full rounded bg-gray-200 p-4 mb-4"
+                />
+            </div> -->
+
+        </div>
+    {{ end }}
+
+    <div class="w-full h-fs overflow-hidden">
+        <div class="d-flex h-fs overflow-hidden">
+            <div class="col-3 border-right overflow-y--scroll h-fs px-0 scrollbar-gutter--stable styled-scrollbars">
+                <div class="d-flex flex-column">
+                    <div class="position-sticky top-0 shadow-md bg-white">
+                        <div class="p-2 d-flex justify-content-between align-items-center  border-bottom">
+                            <div class="d-flex justify-content-start gap-sm">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <button class="btn btn-sm" x-bind:disabled="!logical" x-bind:class="!logical ? 'btn-primary' : 'btn-outline-primary'" @click="logical = false">Type</button>
+                                    <button class="btn btn-sm" x-bind:disabled="logical" x-bind:class="logical ? 'btn-primary' : 'btn-outline-primary'" @click="logical = true">Logical</button>
+                                </div>
+                                <div>
+                                    <div x-data="{ open: false }">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button
+                                              class="btn btn-light btn-sm d-flex align-items-center gap-sm"
+                                              x-ref="button"
+                                              @click="open = ! open">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                                                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/>
+                                              </svg>
+                                              Filter
+                                            </button>
+        
+                                        </div>
+                          
+                                        <div
+                                          x-show="open"
+                                          x-anchor="$refs.button"
+                                          @click.outside="open = false"
+                                          class="bg-white border shadow-md z-10">
+            
+                                          <div class="flex">
+                                            <div class="flex flex-col rounded shadow-sm">
+                                                <div class="d-flex justify-content-between align-items-center pl-2">
+                                                    <small>Filter results</small>
+                                                    <button class="btn btn-link text-decoration-none" @click="open = !open">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                                                          </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="p-2">
+                                                    <input
+                                                        x-ref="searchInput"
+                                                        x-model="search"
+                                                        x-on:keydown.window.prevent.slash="$refs.searchInput.focus()"
+                                                        placeholder="Search ..."
+                                                        type="search"
+                                                        class=" w-100 min-w-20 form-control"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="overflow-y--scroll max-h-20rem px-0 styled-scrollbars">
+                                                <div x-data="{ show: false}">
+                                                    <button class="bg-transparent w-100 border-0 py-2 px-2 text-left text-sm" x-show="!show" @click="show = true">
+                                                        <strong>
+                                                            Entity Type Name
+                                                        </strong>
+                                                    </button>
+                                                    <template x-if="show">
+                                                        <div class="d-flex flex-column p-2">
+                                                            <template x-for="item in filterOptions.entityTypeName">
+                                                                <div class="py-2 border-bottom">
+                                                                    <small x-text="item"></small>
+                                                                </div>
+                                                            </template>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                                <div x-data="{ show: false}">
+                                                    <button class="bg-transparent w-100 border-0 py-2 px-2 text-left text-sm" x-show="!show" @click="show = true">
+                                                        <strong>
+                                                            Config Data Type
+                                                        </strong>
+                                                    </button>
+                                                    <template x-if="show">
+                                                        <div class="d-flex flex-column p-2">
+                                                            <template x-for="item in filterOptions.configDataType">
+                                                                <div class="py-2 border-bottom">
+                                                                    <small x-text="item"></small>
+                                                                </div>
+                                                            </template>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                                <div x-data="{ show: false}">
+                                                    <button class="bg-transparent w-100 border-0 py-2 px-2 text-left text-sm" x-show="!show" @click="show = true">
+                                                        <strong>
+                                                            Config Type
+                                                        </strong>
+                                                    </button>
+                                                    <template x-if="show">
+                                                        <div class="d-flex flex-column p-2">
+                                                            <template x-for="item in filterOptions.configType">
+                                                                <div class="py-2 border-bottom">
+                                                                    <small x-text="item"></small>
+                                                                </div>
+                                                            </template>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                                <div x-data="{ show: false}">
+                                                    <button class="bg-transparent w-100 border-0 py-2 px-2 text-left text-sm" x-show="!show" @click="show = true">
+                                                        <strong>
+                                                            Instance Style
+                                                        </strong>
+                                                    </button>
+                                                    <template x-if="show">
+                                                        <div class="d-flex flex-column p-2">
+                                                            <template x-for="item in filterOptions.instanceStyle">
+                                                                <div class="py-2 border-bottom">
+                                                                    <small x-text="item"></small>
+                                                                </div>
+                                                            </template>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button x-data="{show: false}" @click="show = !show" class="btn btn-link btn-sm d-flex align-items-center gap-sm">
+                                    <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                                        <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+                                        <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+                                      </svg>
+                                      <svg x-show="show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                      </svg>
+                                      <span x-show="show" x-text="">Inactive visible</span>
+                                      <span x-show="!show" x-text="">Inactive hidden</span>
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <template x-if="!logical">
+                        <template x-for="item in values">
+                            <div>
+                                <template x-if="!item.Children || item.Children.length === 0">
+                                    <div class="border-bottom py-2 px-2">
+                                        <strong class="text-sm" x-text="item.categoryName ? item.categoryName + ' / ' + item.Name : item.Name">
+    
+                                        </strong>
+                                    </div>
+                                </template>
+                                <template x-if="item.Children || item.Children.length > 0">
+                                    <div x-data="{ showLevel1: false}" class="pointer"  @click="showLevel1 = !showLevel1">
+    
+                                        <div class="border-bottom py-2 px-2 d-flex justify-content-between align-items-center gap-sm">
+                                            <div class="d-flex align-items-center gap-sm">
+                                                <div class="flex-grow-1 d-flex align-items-center">
+                                                    <button class="badge badge-ligth border-0 square "
+                                                        >
+                                                        <span x-show="showLevel1">-</span>
+                                                        <span x-show="!showLevel1">+</span>
+                                                    </button>
+                                                </div>
+                                                <strong class="text-sm" x-text="item.categoryName ? item.categoryName + ' / ' + item.Name : item.Name"></strong>
+                                        </div>
+                                        <div class="d-flex gap-sm">
+                                            <div  class="d-flex align-items-center">
+                                                <span class="badge badge-info " x-text="item.Children.length"
+                                                ></span>
+                                            </div>
+                                            <button class="badge badge-primary border-0">
+                                                + New
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <template x-if="showLevel1">
+                                        <div>
+                                            <span x-text="item.Children.Children.length"></span>
+                                            <template x-for="l1 in item.Children">
+                                                <div class="border-bottom py-2 px-2 d-flex justify-content-start align-items-center gap-sm">
+                                                    <!-- <div>
+                                                        <div class="badge badge-primary">+</div>
+                                                    </div> -->
+                                                    <span x-text="l1.Name"></sp>
+                                                </div>
+                                            </template>
+
+                                            <template x-if="item.Children || item.Children.length > 0">
+
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+    
+                            </template>
+                        </div>
+                    </template>
+                </template>
+                <template x-if="logical">
+                    <template x-for="item in logicalValues">
+                        <div>
+                            <template x-if="!item.Children || item.Children.length === 0">
+                                <div class="border-bottom py-2 px-2">
+                                    <strong class="text-sm" x-text="item.categoryName ? item.categoryName + ' / ' + item.Name : item.Name">
+
+                                    </strong>
+                                </div>
+                            </template>
+                            <template x-if="item.Children || item.Children.length > 0">
+                                <div x-data="{ showLevel1: false}">
+
+                                    <div class="border-bottom py-2 px-2 d-flex justify-content-between align-items-center gap-sm">
+                                        <div class="d-flex align-items-center gap-sm">
+                                            <button class="badge badge-ligth border-0 square "
+                                            @click="showLevel1 = !showLevel1"
+                                            >
+                                            <span x-show="showLevel1">-</span>
+                                            <span x-show="!showLevel1">+</span>
+                                        </button>
+                                            <strong class="text-sm" x-text="item.categoryName ? item.categoryName + ' / ' + item.Name : item.Name"></strong>
+                                        </div>
+                                        <div>
+                                        <div  class="d-flex align-items-center gap-sm">
+                                            <span class="badge badge-info " x-text="item.Children.length"
+                                            ></span>
+                                            <template x-if="item.Name === 'Processes'">
+
+                                                <div  x-data="{ open: true }" class="d-flex align-items-center justify-dontent-center">
+                                                    <!-- Trigger -->
+                                                    <button x-on:click="open = true" type="button" class="badge badge-primary border-0">
+                                                        + New 
+                                                        <!-- <span x-text="item.Name"></span> -->
+                                                    </button>
+                                                
+                                                    <!-- Modal -->
+                                                    <div x-show="open" x-on:keydown.escape.prevent.stop="open = false" role="dialog" aria-modal="true" x-id="['modal-title']" :aria-labelledby="$id('modal-title')" class="fixed inset-0 z-10 overflow-y-auto" aria-labelledby="modal-title-1" style="display: none;">
+                                                        <!-- Panel -->
+                                                        <div x-show="open" x-transition="" x-on:click="open = false" class="relative  d-flex min-h-screen alight-items-center justify-content-center p-4 z-20" style="display: none;">
+                                                            <div x-on:click.stop="" x-trap.noscroll.inert="open" class="relative w-full max-w-2xl min-w-50vw overflow-y-auto bg-white p-12 shadow-lg rounded">
+                                                                <div class="px-2 pt-3 pb-2 border-bottom">
+                                                                    <h6 class="m-0 p-0">Create new process</h6>
+                                                                </div>
+                                                                <form x-data="{ enableForm: false, enableDocuments: false }">
+                                                                    <div class="container-fluid">
+                                                                        <div class="form-group row no-gutters py-2">
+                                                                          <label class="col-4 col-form-label" for="exampleFormControlSelect1 ">Select Dashboard</label>
+                                                                          <div class="col-8">
+                                                                              <select class="form-control" id="exampleFormControlSelect1">
+                                                                                <option>Dashboard name 1</option>
+                                                                                <option>Dashboard name 2</option>
+                                                                                <option>Dashboard name 3</option>
+                                                                                <option>Dashboard name 4</option>
+                                                                                <option>Dashboard name 5</option>
+                                                                              </select>
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="form-group row no-gutters">
+                                                                            <span class="col-4 col-form-label">
+
+                                                                                Documents
+                                                                            </span>
+                                                                            <div class="col-8">
+                                                                                
+                                                                                <div class="custom-control custom-switch">
+                                                                                    <input type="checkbox" x-model="enableDocuments" class="custom-control-input" id="enableDocuments">
+                                                                                    <label x-text="enableDocuments ? 'Enable' :  'Disabled'" class="custom-control-label" for="enableDocuments">no form</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row no-gutters">
+                                                                            <span x-show="enableForm" class="col-4 col-form-label">
+
+                                                                                Form enables
+                                                                            </span>
+                                                                            <span x-show="!enableForm" class="col-4 col-form-label">
+
+                                                                                Form
+                                                                            </span>
+                                                                            <div class="col-8">
+                                                                                
+                                                                                <div class="custom-control custom-switch">
+                                                                                    <input type="checkbox" x-model="enableForm" class="custom-control-input" id="EnableForm">
+                                                                                    <label x-text="enableForm ? 'Form enable' :  'Form disabled'" class="custom-control-label" for="EnableForm">no form</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                        <template x-if="enableForm">
+
+                                                                            <div class="form-group row " >
+                                                                                <div class="col  flex-grow-1">
+                                                                                    <div class="row">
+                                                                                        <div class="col">
+                                                                                            <label  for="exampleFormControlSelect1 ">Select a form</label>
+                                                                                            <select class="form-control" id="exampleFormControlSelect1">
+                                                                                              <option>Form name 1</option>
+                                                                                              <option>Form name 2</option>
+                                                                                              <option>Form name 3</option>
+                                                                                              <option>Form name 4</option>
+                                                                                              <option>Form name 5</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-auto d-flex align-items-center">
+                                                                                    or
+                                                                                </div>
+                                                                                <div class="col flex-grow-1">
+                                                                                    <div class="row">
+                                                                                        <div class="col">
+    
+                                                                                            <label class="" for="exampleFormControlSelect1 ">Create a form</label>
+                                                                                            <div >
+                                                                                                <button class="btn btn-secondary">Create new form</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </template>
+                                                                    </div>
+                                                                </form>
+                                                                <div class="d-flex justify-content-between px-2 border border-top py-2">
+                                                                    <div>
+                                                                        <button class="btn btn-primary"> Cancel</button>
+
+                                                                    </div>
+                                                                    <div>
+
+                                                                        <button class="btn btn-primary"> Create Process</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Overlay -->
+                                                        <div x-show="open" x-transition.opacity="" class="fixed inset-0 bg-black bg-opacity-50" style="display: none;"></div>
+                                                
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <template x-if="showLevel1">
+                                        <div>
+                                            <span x-text="item.Children.Children.length"></span>
+                                            <template x-for="l1 in item.Children">
+                                                <div class="border-bottom py-2 px-2 d-flex justify-content-start align-items-center gap-sm">
+                                                    <!-- <div>
+                                                        <div class="badge badge-primary">+</div>
+                                                    </div> -->
+                                                    <span x-text="l1.Name"></sp>
+                                                </div>
+                                            </template>
+
+                                            <template x-if="item.Children || item.Children.length > 0">
+
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+
+                            </template>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+        <div class="col-9 overflow-y--scroll h-fs px-0 scrollbar-gutter--stable styled-scrollbars">
+            
+            <div class="list-unstyled p-2">
+                <template x-for="item in values">
+                    <div class="mt-4 border rounded p-2">
+                        <template x-if="!item.Children || item.Children.length === 0">
+                            <div class="d-flex flex-column">
+                                <strong x-text="item.categoryName ? item.categoryName + ' / ' + item.Name : item.Name"></strong>
+                                <div>
+                                    <!-- <span x-text="item.Key"></span> -->
+                                    <span class="badge badge-primary" x-text="item.ConfigType"></span>
+                                    <span x-show="item.StateCode" class="badge badge-success" x-text="item.StateCode ? item.StateCode : 'N/A'"></span>
+                                    <span class="badge badge-info" x-text="item.categoryStyle"></span>
+                                    <span class="badge badge-warning" x-text="item.instanceStyle"></span>
+                                </div>
+
+                            </div>
+                        </template>
+                        <template x-if="item.Children && item.Children.length > 0">
+                            <div class="list-unstyled">
+                                <strong x-text="item.categoryName ? item.categoryName + ' / ' + item.Name : item.Name"></strong>
+                                <template x-for="l1 in item.Children">
+                                    <div class="mt-2 border rounded p-2 level-0">
+                                        <div class="d-flex flex-column">
+                                            <div class="d-flex">
+                                                
+                                                <strong x-text="l1.categoryName !== '' || l1.categoryName !== 'undefined' ? l1.categoryName + ' / ' + l1.Name : l1.Name"></strong>
+                                                
+                                            </div>
+                                            <div class="mt-2">
+                                                <span class="badge badge-primary" x-text="l1.ConfigType"></span>
+                                                <span class="badge badge-success" x-text="l1.StateCode ? l1.StateCode : ''"></span>
+                                                <span x-text="l1.instanceStyle"></span>
+                                            </div>
+                                            <div>
+                                                <span class="badge badge-info" x-text="l1.categoryStyle"></span>
+                                            </div>                            
+                                        </div>
+                                        <template x-if="l1.Children && l1.Children.length > 0">
+                                            <div class="list-unstyled d-flex gap flex-wrap">
+                                                <template x-for="l2 in l1.Children">
+                                                    <div class="mt-2 border rounded p-2 flex-grow-1 level-1">
+                                                        <div class="d-flex flex-column">
+                                                            <strong x-text="l2.categoryName + ' / ' +l2.Name"></strong>
+                                                            <div class="d-flex flex-wrap gap mt-2">
+            
+                                                                <!-- <span x-text=""></span> -->
+                                                                <!-- <span x-text="l2.Key"></span> -->
+                                                                <span class="badge badge-primary" x-text="l2.ConfigType"></span>
+                                                                <span class="badge badge-success" x-text="l2.StateCode"></span>
+                                                                <span x-text="l2.instanceStyle"></span>
+                                                            </div>
+                                                            <div>
+                                                                <span class="badge badge-info" x-text="l2.categoryStyle"></span>
+        
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <div class="container">
+        <!-- <div class=" top-0 bg-white shadow">
+            <template x-for="item in filteredValues" :key="item.id">
+                <strong x-text="item.Name"></strong>
+            </template>
+        </div> -->
+
+
+
+
+    </div>
+</body>
+
+
+<!-- Fetch and pass the data to the Alpine.js component -->
+<script>
+    // Define the data function globally
+    function data() {
+        return {
+            originalAdminData: [],
+            adminData: [],
+            values: [],
+            logicalValues: [],
+            logical: true,
+            filters: {
+                configType: '',
+                stateCode: '',
+                instanceStyle: ''
+            },
+            search: '',
+
+            
+            // Define filtering function
+            get filteredItems() {
+                // Filter items based on selected filter values
+                return this.values.filter(item => {
+                    // Check if the item matches the selected filter values
+                    return (this.filters.configType === '' || item.ConfigType === this.filters.configType) &&
+                        (this.filters.stateCode === '' || item.StateCode === this.filters.stateCode) &&
+                        (this.filters.entityTypeName === '' || item.entityTypeName === this.filters.entityTypeName) &&
+                        (this.filters.configDataType === '' || item.configDataType === this.filters.configDataType) &&
+                        (this.filters.instanceStyle === '' || item.instanceStyle === this.filters.instanceStyle);
+                });
+            },
+
+
+            init() {
+                fetch('http://localhost:1313/studio.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        this.values = data[0]._value;
+                        // Populate filterOptions.stateCode
+                        this.filterOptions.stateCode = this.getAllFilterTypes(this.values, 'StateCode');
+                        this.filterOptions.stateCode = this.formatFilterData(this.filterOptions.stateCode);
+                        
+                        this.filterOptions.instanceStyle = this.getAllFilterTypes(this.values, 'instanceStyle');
+                        this.filterOptions.instanceStyle = this.formatFilterData(this.filterOptions.instanceStyle);
+                        
+                        this.filterOptions.entityTypeName = this.getAllFilterTypes(this.values, 'EntityTypeName');
+                        this.filterOptions.entityTypeName = this.formatFilterData(this.filterOptions.entityTypeName);
+                        
+                        this.filterOptions.configDataType = this.getAllFilterTypes(this.values, 'ConfigDataType');
+                        this.filterOptions.configDataType = this.formatFilterData(this.filterOptions.configDataType);
+                        
+                        this.filterOptions.configType = this.getAllFilterTypes(this.values, 'ConfigType');
+                        this.filterOptions.configType = this.formatFilterData(this.filterOptions.configType);
+
+                        // console.log(flattenData(data));
+                    }).catch(error => console.error('Error fetching data:', error));
+                
+                fetch('http://localhost:1313/studio1.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        this.logicalValues = data[0]._value;
+                        
+
+                        // console.log(flattenData(data));
+                    }).catch(error => console.error('Error fetching data:', error));
+                
+            },
+
+            get filterOptions() {
+                let options = {
+                    configType: this.getAllFilterTypes(this.values, 'ConfigType'),
+                    stateCode: this.getAllFilterTypes(this.values, 'StateCode'),
+                    entityTypeName: this.getAllFilterTypes(this.values, 'EntityTypeName'),
+                    configDataType: this.getAllFilterTypes(this.values, 'ConfigDataType'),
+                    instanceStyle: this.getAllFilterTypes(this.values, 'instanceStyle')
+                };
+                return options;
+            },
+            
+
+
+            getAllFilterTypes(data, property) {
+                let values = new Set();
+                const traverseData = (items) => {
+                    items.forEach(item => {
+                        if (item[property]) {
+                            values.add(item[property]);
+                        }
+                        if (item.Children && Array.isArray(item.Children)) {
+                            traverseData(item.Children);
+                        }
+                    });
+                };
+
+                traverseData(data);
+
+                return Array.from(values);
+            },
+
+            formatFilterData(data) {
+                return data.map(item => ({
+                    value: item,
+                    label: item
+                }));
+            },
+
+            get filteredValues() {
+                if (this.search === '' || !this.values) {
+                    return this.values;
+                }
+                return this.values.filter((value) => {
+                    if (value && value.instanceStyle) {
+                        return value.instanceStyle
+                            .replace(/ /g, '')
+                            .toLowerCase()
+                            .includes(this.search.replace(/ /g, '').toLowerCase());
+                    }
+                    return false; // Handle the case where instanceStyle is undefined
+                });
+            },
+
+
+
+        };
+    }
+
+    // Listen for the alpine:init event
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('data', data);
+    });
+
+</script>

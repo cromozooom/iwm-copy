@@ -4,12 +4,12 @@
     {{- partial "site-style.html" . -}}
     {{- partial "site-scripts.html" . -}}
   </head>
+  {{ block "main" . }}
   <body
     class="body position-relative h-100 d-flex flex-column min-vh"
     x-data="{ useAlternateStyle: false, bodyHeight: null, chatOpen: false, editDasboard: false }"
     x-init="">
-    {{- partial "site-nav.html" . -}}
-    {{ block "main" . }}
+      {{- partial "site-nav.html" . -}}
+    </body>
     {{ end }}
-  </body>
 </html>

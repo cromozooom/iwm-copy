@@ -756,3 +756,12 @@ $paddingCath: 1rem;
 .opacity-0 {
   opacity: 0;
 }
+
+.cursor {
+  &-move {
+    cursor: move;
+  }
+  &-pointer {
+    cursor: pointermove;
+  }
+}

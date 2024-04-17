@@ -4,12 +4,13 @@ $brandName: "gray";
 $brandName: "flowerPowerModern";
 $brandName: "flowerPower";
 $brandName: "punk"; // missing brand
-$brandName: "dove"; // missing brand
 $brandName: "RothChildish"; // missing brand
-$brandName: "edwardJones";
 $brandName: "charlesHarley";
-$brandName: "cai";
 $brandName: "rmm";
+$brandName: "indosuez";
+$brandName: "dove"; // missing brand
+$brandName: "edwardJones";
+$brandName: "cai";
 $h: 0;
 $s: 0;
 $l: 0;
@@ -67,6 +68,33 @@ $brand-12: #133c3b;
   $info: #6c757d;
   $warning: #ff9100;
   $danger: #ca0c0c;
+} @else if $brandName == "indosuez" {
+  // $highlight: hsl(46, 100%, 50%);
+  $brand: #736150;
+  $primary: #736150;
+  $highlight: hsl(228, 70%, 26%);
+  $highlight: hsl(232, 55%, 43%);
+
+  $secondary: hsl(231, 0%, 51%);
+  $success: #51bd42;
+  $info: #92bce1;
+  $warning: #ffe75c;
+  $danger: #ff2b2b;
+  $h: 232;
+  $s: 73;
+  $l: 45;
+  $brand-1: #fdfbf8;
+  $brand-2: #fbf8f1;
+  $brand-3: #f9f4e9;
+  $brand-4: #f5eddb;
+  $brand-5: #eee2c4;
+  $brand-6: #e7d4a9;
+  $brand-7: #dabf7f;
+  $brand-8: #bda66f;
+  $brand-9: #a69161;
+  $brand-10: #988559;
+  $brand-11: #7a6b47;
+  $brand-12: #3d3624;
 } @else if $brandName == "dove" {
   // $highlight: hsl(46, 100%, 50%);
   $brand: hsl(42, 56%, 68%);
